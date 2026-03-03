@@ -71,7 +71,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<h1>Welcome to CodeIgniter!</h1>
 	<?=base_url() ?><br>
 	<?php echo $x =52; ?>
+	<br>
+	<hi></hi><?=convertir_estatus("0")  ?> </hi>
 	<div id="body">	
+		<?php
+		if(empty($variable)){
+			echo "No existe valor";
+		}else{
+			echo "El valor de la variable es: ".$variable;
+		}
+		?>
 		<h1>¡Si llegaste aqui, es que se configuró bien el sitio!</h1>
 	<p>The page you are looking at is being generated dynamically by CodeIgniter.</p>
 

@@ -3,6 +3,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Welcome extends CI_Controller {
 
+	public function __construct(){
+		parent::__construct();
+		$this->load->model("Pagina_model","mP");
+	}
+
 	/**
 	 * Index Page for this controller.
 	 *
@@ -18,9 +23,26 @@ class Welcome extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
+	public function index()
+	{
+		$this->load->view('welcome_message');
+		// Esto es un comentario de prueba
+	}
+
 	public function Mensaje()
 	{
 		$this->load->view('welcome_message');
 		// Esto es un comentario de prueba
+	}
+	public function Mensaje2($variable= ''){
+		$datos['variable']=$variable;
+		$this->load->view('welcome_message',$datos);
+	}
+
+	public function principal(){
+		$this->load->view('secciones/header');
+		$datos["secciones"]=$this->mP->consultar_secciones_activas();
+		$this->load->view('principal',$datos);
+		$this->load->view('secciones/footer');
 	}
 }
